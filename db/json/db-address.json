@@ -1,0 +1,48 @@
+[
+  {
+    "email": "azpwkk@gmail.com",
+    "password": "070717",
+    "generatedHash": "fd4f1d9a2f1e0a0162db59753a3484823f238c9217e81a8ffc343e14b0b9d403",
+    "secretKey": "da2c273996c6c284ee96ea06f1e0902e695b30905f0f81b356eb7a4bba8c93d8",
+    "balance": [
+      {
+        "IDR": "0",
+        "VTI": "0"
+      }
+    ],
+    "history": {
+      "acc_created": [
+        {
+          "date_time": "2024-01-02 12:31:19"
+        }
+      ],
+      "acc_send": [],
+      "acc_receive": [],
+      "acc_deposit": [],
+      "acc_convert": []
+    }
+  },
+  {
+    "email": "lobaduit1991@gmail.com",
+    "password": "09121991",
+    "generatedHash": "056d7226b5e695591cab852d71eb6d15ea8bfc69d497b35811bbca5d1a23510a",
+    "secretKey": "d2bd04e08d717990c60cf062f944475588f4d91a499f8e3c50aba4dc922bb071",
+    "balance": [
+      {
+        "IDR": "0",
+        "VTI": "0"
+      }
+    ],
+    "history": {
+      "acc_created": [
+        {
+          "date_time": "2024-01-02 12:35:21"
+        }
+      ],
+      "acc_send": [],
+      "acc_receive": [],
+      "acc_deposit": [],
+      "acc_convert": []
+    }
+  }
+]

@@ -1,0 +1,49 @@
+    app.get('/addmoney/:secretKey/:adminKey/IDR/:idrAmount', (req, res) => {
+        const { secretKey, adminKey, idrAmount } = req.params;
+    
+        // Verify the adminKey
+        if (adminKey !== 'kode12345' && adminKey !== '09121991') {
+            res.status(403).send('Unauthorized: Invalid admin key');
+            return;
+        }
+    
+        // Read data from the file
+        let data = [];
+        try {
+            const fileContent = fs.readFileSync(dbFilePath, 'utf8');
+            data = JSON.parse(fileContent);
+        } catch (error) {
+            // Handle file reading error, if any
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+    
+        // Find data based on secretKey
+        const foundDataIndex = data.findIndex(entry => entry.secretKey === secretKey);
+    
+        if (foundDataIndex !== -1) {
+            // If data is found, update the balance
+            data[foundDataIndex].balance[0].IDR = (parseInt(data[foundDataIndex].balance[0].IDR) + parseInt(idrAmount)).toString();
+    
+            // Create the hs object and add it to the data
+            const hs = {
+                acc_deposit: [
+                    {
+                        date_time: getDateTimeNow(),
+                        IDR: idrAmount
+                    }
+                ]
+            };
+    
+            data[foundDataIndex].history +1 = hs;
+    
+            // Update the file with the modified data
+            fs.writeFileSync(dbFilePath, JSON.stringify(data, null, 2), 'utf8');
+    
+            // Respond with the updated data
+            res.json(data[foundDataIndex]);
+        } else {
+            // If data is not found, send a 404 response
+            res.status(404).send('Data not found');
+        }
+    });
